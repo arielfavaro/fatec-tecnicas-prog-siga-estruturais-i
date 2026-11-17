@@ -1,8 +1,11 @@
 package siga;
 
 /**
- * Demonstra os três deslizes acontecendo. Execute e observe a saída:
- * é dela que partem as etapas da ficha de atividade prática.
+ * Monta as peças do sistema e demonstra os três deslizes resolvidos.
+ *
+ * Liga o {@link AdaptadorSecretariaLegado} aos dois clientes que consomem
+ * {@link FonteDeAlunos} e entrega à {@link TelaMatricula} só a
+ * {@link FachadaMatricula}, que esconde o subsistema de matrícula.
  */
 public class Main {
 
@@ -11,7 +14,7 @@ public class Main {
         FonteDeAlunos fonteDeAlunos = new AdaptadorSecretariaLegado(servicoLegado);
         AlunoDAO alunoDAO = new AlunoDAOMemoria();
 
-        System.out.println("=== SIGA — Aula 10: Adapter e Facade (código inicial) ===");
+        System.out.println("=== SIGA — Aula 10: Adapter e Facade ===");
 
         System.out.println();
         System.out.println("1) Importação a partir do sistema legado");
@@ -23,7 +26,7 @@ public class Main {
         }
 
         System.out.println();
-        System.out.println("2) O mesmo dado, convertido por outro trecho do sistema");
+        System.out.println("2) O mesmo dado, lido por outro trecho do sistema");
         new RelatorioSituacao(fonteDeAlunos).imprimir();
         System.out.println("   >> DESLIZE 1 resolvido: a aluna 2024003 aparece ATIVA nos dois pontos.");
         System.out.println("      A conversao existe em um unico lugar: AdaptadorSecretariaLegado.");
@@ -49,8 +52,5 @@ public class Main {
         tela.aoClicarEmMatricular("2024004", "123.456.789-09", "DSM-2B");
         System.out.println("   >> DESLIZE 3 resolvido: a tela recebe UM colaborador, FachadaMatricula,");
         System.out.println("      e a ordem das chamadas ficou na fachada.");
-
-        System.out.println();
-        System.out.println("Sua tarefa: ver o README.md e a ficha de atividade prática.");
     }
 }
